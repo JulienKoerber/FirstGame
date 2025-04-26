@@ -11,12 +11,13 @@ HAUTEUR_ECRAN = 800
 screen = pygame.display.set_mode((LARGEUR_ECRAN, HAUTEUR_ECRAN))
 pygame.display.set_caption("Jeu d'esquive")
 
-# Couleurs
-BLANC = (255, 255, 255)
+# Charger l'image de fond
+background_image = pygame.image.load("eric.png")
+background_image = pygame.transform.scale(background_image, (LARGEUR_ECRAN, HAUTEUR_ECRAN))
 
 # Définir le joueur
-joueur_largeur = 50
-joueur_hauteur = 80
+joueur_largeur = 70
+joueur_hauteur = 100
 joueur_x = LARGEUR_ECRAN // 2 - joueur_largeur // 2
 joueur_y = HAUTEUR_ECRAN - joueur_hauteur - 10
 joueur_vitesse = 5
@@ -27,12 +28,12 @@ joueur_image = pygame.transform.scale(joueur_image, (joueur_largeur, joueur_haut
 
 # Définir les objets à esquiver
 objets = []
-objet_largeur = 50
-objet_hauteur = 80
+objet_largeur = 70
+objet_hauteur = 100
 objet_vitesse = 5
 
 # Charger l'image des objets
-objet_image = pygame.image.load("eric.png")
+objet_image = pygame.image.load("marius.png")
 objet_image = pygame.transform.scale(objet_image, (objet_largeur, objet_hauteur))
 
 # Fonction pour ajouter un nouvel objet
@@ -83,7 +84,7 @@ while running:
     objets = [objet for objet in objets if objet[1] < HAUTEUR_ECRAN]
 
     # Dessiner
-    screen.fill(BLANC)  # Fond blanc
+    screen.blit(background_image, (0, 0))  # Afficher l'image de fond
     screen.blit(joueur_image, (joueur_x, joueur_y))  # Afficher l'image du joueur
     for objet in objets:
         screen.blit(objet_image, (objet[0], objet[1]))  # Afficher les images des objets
