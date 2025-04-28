@@ -36,11 +36,24 @@ objet_vitesse = 5
 objet_image = pygame.image.load("marius.png")
 objet_image = pygame.transform.scale(objet_image, (objet_largeur, objet_hauteur))
 
+# Charger une police pour le texte
+font = pygame.font.SysFont(None, 75)
+
 # Fonction pour ajouter un nouvel objet
 def ajouter_objet():
     x = random.randint(0, LARGEUR_ECRAN - objet_largeur)
     y = -objet_hauteur
     objets.append([x, y])
+
+# Fonction pour afficher un message
+def afficher_message(message):
+    texte = font.render(message, True, (255, 0, 0))  # Texte rouge
+    texte_rect = texte.get_rect(center=(LARGEUR_ECRAN // 2, HAUTEUR_ECRAN // 2))
+    screen.blit(texte, texte_rect)
+    pygame.display.flip()
+    pygame.time.wait(1000)  # Attendre 1 seconde
+    pygame.quit()
+    sys.exit()
 
 # Boucle principale du jeu
 clock = pygame.time.Clock()
@@ -77,8 +90,7 @@ while running:
             joueur_x + joueur_largeur > objet[0] and
             joueur_y < objet[1] + objet_hauteur and
             joueur_y + joueur_hauteur > objet[1]):
-            print("Collision !")
-            running = False
+            afficher_message("You Loose")
 
     # Supprimer les objets hors de l'écran
     objets = [objet for objet in objets if objet[1] < HAUTEUR_ECRAN]
