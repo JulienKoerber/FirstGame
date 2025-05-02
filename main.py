@@ -12,7 +12,7 @@ screen = pygame.display.set_mode((LARGEUR_ECRAN, HAUTEUR_ECRAN))
 pygame.display.set_caption("Jeu d'esquive")
 
 # Charger l'image de fond
-background_image = pygame.image.load("eric.png")
+background_image = pygame.image.load("images/eric.png")
 background_image = pygame.transform.scale(background_image, (LARGEUR_ECRAN, HAUTEUR_ECRAN))
 
 # Définir le joueur
@@ -23,7 +23,7 @@ joueur_y = HAUTEUR_ECRAN - joueur_hauteur - 10
 joueur_vitesse = 5
 
 # Charger l'image du joueur
-joueur_image = pygame.image.load("val.png")
+joueur_image = pygame.image.load("images/val.png")
 joueur_image = pygame.transform.scale(joueur_image, (joueur_largeur, joueur_hauteur))
 
 # Définir les objets à esquiver
@@ -33,7 +33,7 @@ objet_hauteur = 100
 objet_vitesse = 5
 
 # Charger l'image des objets
-objet_image = pygame.image.load("marius.png")
+objet_image = pygame.image.load("images/marius.png")
 objet_image = pygame.transform.scale(objet_image, (objet_largeur, objet_hauteur))
 
 # Charger une police pour le texte
